@@ -17,13 +17,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.11
-#      - name: Cache local Maven repository
-#        uses: actions/cache@v2
-#        with:
-#          path: ~/.m2/repository
-#          key: ${{ runner.os }}-maven-release-${{ hashFiles('**/pom.xml') }}
-#          restore-keys: |
-#            ${{ runner.os }}-maven-release-
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-release-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-release-
       - name: Set environment variables
         run: |
           echo ::set-env name=PREVIOUS_VERSION::$(printf 'VERSION=${diktat-check.version}\n0\n' | mvn help:evaluate | grep '^VERSION' | cut -d= -f2)
@@ -72,3 +72,4 @@ jobs:
           body: |
             * Versions are updated in pom.xml, README.md and build.gradle.kts
             * Current project version is incremented to the next snapshot
+          base: master
