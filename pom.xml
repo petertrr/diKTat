@@ -227,7 +227,7 @@
             <plugin>
                 <groupId>com.github.ozsie</groupId>
                 <artifactId>detekt-maven-plugin</artifactId>
-                <version>1.11.0</version>
+                <version>1.14.2.1</version>
                 <executions>
                     <execution>
                         <id>detekt</id>
